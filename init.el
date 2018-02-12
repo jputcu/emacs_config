@@ -30,6 +30,13 @@
 
 
 ;;
+;;  Rust
+;;
+(use-package rust-mode
+  :ensure t)
+
+
+;;
 ;;  Markdown
 ;;
 (use-package markdown-mode
