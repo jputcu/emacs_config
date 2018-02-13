@@ -16,6 +16,7 @@
 (setq-default c-basic-offset 4)
 (setq-default show-trailing-whitespace t)
 (setq-default tab-width 4)
+(setq-default inhibit-startup-screen t)
 
 (tool-bar-mode -1)
 (load-theme 'tango-dark)
@@ -64,21 +65,6 @@
 ;;	(gdb-set-window-buffer (gdb-disassembly-buffer-name) t win4)))
 
 
-;;
-;;  Misc
-;;
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-	(neotree use-package rust-mode markdown-mode intero ghc fsharp-mode darcsum))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Keep emacs custom configuration out of this version controlled file!
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
