@@ -28,6 +28,9 @@
   :ensure t)
 (add-hook 'haskell-mode-hook 'intero-mode)
 
+;; For Haskell stack yaml files
+(use-package yaml-mode
+  :ensure t)
 
 ;;
 ;;  Rust
