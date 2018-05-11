@@ -1,3 +1,19 @@
+;;
+;; Notes:
+;; ======
+;; Windows
+;; -------
+;; set HOME environment variable to '%USERPROFILE%\AppData\Roaming\'
+;;
+;; ### To open files without extension with emacs
+;; Registry key: 'HKEY_CLASSES_ROOT\Unknown'.
+;; Add a key 'emacs' to 'shell'
+;; Add a key 'command' to 'shell/emacs'
+;; Set the default value of 'shell/emacs' to 'C:\msys32\mingw32\bin\runemacs "%1"'
+;; and switch the 'default' of 'shell' from 'openas' to 'emacs'
+;;
+
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -22,6 +38,11 @@
 (load-theme 'tango-dark)
 
 
+
+;; General recompile with F7 key
+(global-set-key (kbd "<f7>") 'recompile)
+
+
 ;;
 ;;  Haskell
 ;;
@@ -33,12 +54,30 @@
 (use-package yaml-mode
   :ensure t)
 
+
+;;
+;;  F-sharp
+;;
+(use-package fsharp-mode
+  :defer t)
+
+
 ;;
 ;;  Rust
 ;;
 (use-package rust-mode
+  :defer t
+  :init
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'racer-mode-hook #'company-mode))
+
+;; TODO  :bind ("<f7>" . rust-compile))
+(use-package racer
   :ensure t)
 
+(use-package toml-mode
+  :ensure t)
 
 ;;
 ;;  Markdown
@@ -52,6 +91,12 @@
 ;;
 (load "~/.emacs.d/intel-hex-mode.el")
 
+
+;;
+;;  C/C++
+;;
+(use-package xcscope
+  :ensure t)
 
 ;; Nice project tree
 (use-package neotree
@@ -68,3 +113,10 @@
 ;; Keep emacs custom configuration out of this version controlled file!
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+
+;;
+;;  CMake
+;;
+(use-package cmake-mode
+  :ensure t)
