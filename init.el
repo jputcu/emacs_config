@@ -120,3 +120,14 @@
 ;;
 (use-package cmake-mode
   :ensure t)
+
+
+;;
+;;  Start a cmd prompt here
+;;
+(defun start-cmd ()
+  (interactive)
+  (let ((proc (start-process "cmd" nil "cmd.exe" "/C" "start" "cmd.exe")))
+	(set-process-query-on-exit-flag proc nil)
+	)
+)
