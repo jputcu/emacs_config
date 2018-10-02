@@ -25,11 +25,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Disable beep
+(setq visible-bell 1)
 
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 ;;(setq-default indent-tabs-mode t)
-(setq-default c-basic-offset 4)
 (setq-default show-trailing-whitespace t)
 (setq-default tab-width 4)
 (setq-default inhibit-startup-screen t)
@@ -95,6 +96,9 @@
 ;;
 ;;  C/C++
 ;;
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
 (use-package xcscope
   :ensure t)
 
